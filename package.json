@@ -1,0 +1,22 @@
+{
+  "name": "leadlens",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LeadLens - turn a raw company list into a verified, scored, CRM-ready call sheet.",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "start": "npm run start -w server",
+    "test": "npm test -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,16 @@
+# Render Blueprint: New > Blueprint > pick this repo. Every push to main redeploys.
+services:
+  - type: web
+    name: leadlens
+    runtime: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL # Neon connection string (postgresql://...?sslmode=require)
+        sync: false
+      - key: ANTHROPIC_API_KEY # optional: enables AI insights
+        sync: false
+      - key: CORS_ORIGIN # set to your Vercel URL if the frontend is hosted separately
+        value: "*"
