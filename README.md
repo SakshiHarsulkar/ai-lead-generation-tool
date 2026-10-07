@@ -1,5 +1,8 @@
 # LeadLens: from a raw company list to a ranked, verified call sheet
 
+**Live demo: https://leadlens-v18q.onrender.com**. Open the *"Demo: B2B software companies"* list in the sidebar, or click **New lead list → Try the sample list**.
+*(Hosted on Render's free tier: the first visit after a period of inactivity takes ~30–60 s while the server wakes up.)*
+
 LeadLens is an enrichment and prioritisation layer for lead-generation tools like **SaaSquatch Leads**.
 Paste a list of company websites (or upload any CRM / spreadsheet export) and LeadLens:
 
@@ -99,7 +102,7 @@ Locally, **PGlite** runs the same Postgres engine in-process (WASM), so the iden
 - **Safe parallelism**: leads are claimed with `UPDATE … WHERE id IN (SELECT … FOR UPDATE SKIP LOCKED)`, so multiple tabs or multiple server instances never process the same lead, and stale claims are retried after 3 minutes
 - **Instant re-score**: ICP / playbook changes re-rank from stored enrichment data with no crawling
 - **Bulk insert** with `unnest()`, a single round trip for a 500-row list
-- Measured locally: **13 real company sites (~50 pages) enriched in ~10 s**; a cached re-run takes well under 1 s
+- Measured: **13 real company sites (~50 pages) enriched in ~10 s locally, ~37 s on Render's free tier** (0.1 CPU); a cached re-run takes well under 1 s
 
 ### Scoring model (`server/src/scorer.js`)
 
